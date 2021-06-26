@@ -55,7 +55,7 @@ project.get("/author/:Id",(req,res)=>{
  project.get("/author/:id/:title",(req,res)=>{
     const categ_book=data.author.filter((book)=>book.books.includes(req.params.title));
     if(categ_book.length===0){
-        return res.json({error :'${req.params.title}'});
+        return res.json({error :`${req.params.title}`});
     }
     return res.json({ur_book:categ_book});
 

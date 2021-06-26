@@ -4,7 +4,7 @@ const books=[{
     isbn:"12",
     title:"jai balayya",
     pub_date:"20-10-1985",
-    lang:"telugu",
+    lang:["telugu","english"],
     num_pa:"100",
     author:[1,2],
     category:["tech","movies","physics boya","logic"],

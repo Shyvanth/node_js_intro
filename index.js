@@ -2,7 +2,7 @@ const exp=require("express");
 //imported
 //initialsing
 const project=exp();
-project.listen(420,()=>console.log("lets check"));
+project.use(exp.json());
 //local host server completed
 //now for books,authors etc.
 //importing
@@ -82,3 +82,50 @@ project.get("/publ/:Id",(req,res)=>{
      return res.json({ur_book:booky});
  };
  });
+ //updating
+ //adding new book(post)
+ /*route=/book/author and params=isbn,title and so on ,we can write all params,so use new Book obj.
+ */
+ project.post("/book/add",(req,res)=>{
+     const {newBook}=req.body;
+     //can also write const newBook=req.body.newBoook,above line is destructuring?
+     //we are pushing newBook into data of books object.
+     data.books.push(newBook);
+     return res.json({ur_books:data.books});
+ });
+ //upto now ,browser only take get function,to take post ,use postman(http client)
+ /*adding author 
+ route =add/author
+ same as book*/
+ project.post("/author/add",(req,res)=>{
+    const {newAuthor}=req.body;
+   
+    data.author.push(newAuthor);
+    return res.json({Authors:data.author});
+});
+//publications adding
+project.post("/pub/add",(req,res)=>{
+    const {newPub}=req.body;
+    
+    data.pub.push(newPub);
+    return res.json({thors_after_adding_pub:data.pub});
+});
+//put
+//updating in and of it
+//update book title
+project.put("/update/book/:isb",(req,res)=>{
+    //for each is best than map and filter because it directly access arary
+    data.books.forEach((book) => {
+        
+     
+        if(book.isbn===req.params.isb){
+            book.title=req.body.newTitle;
+            return;
+        }
+
+    });
+    return res.json(data.books);
+});
+
+ 
+ project.listen(420,()=>console.log("lets check"));

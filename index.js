@@ -126,6 +126,57 @@ project.put("/update/book/:isb",(req,res)=>{
     });
     return res.json(data.books);
 });
+//these all which are modifying in postman ,are only upddated in RAm
+//update /add new author
+//here we should in books,author array both
+project.put("/update/author/:Isbn/:AuthorId",(req,res)=>{
+    data.books.forEach((book)=>{
+        if(book.isbn===req.params.Isbn){
+            return book.author.push(parseInt(req.params.AuthorId));
+        }
+        
+    });
+    data.author.forEach((book)=>{
+        if(book.id===parseInt(req.params.AuthorId)){
+            return book.author.push(req.params.Isbn);
+        }
+    });
+    return res.json({updated_books:data.books, updated_author:data.author});
+});
+//update /add new book to pub
+project.put("pub/update/book/:Isb",(req,res)=>{
+    //updating pub databse
+    data.pub.forEach((element)=>{
+        if(element.id===req.body.pubId){
+            return element.books.push(req.params.Isb);
+            //DOUBT
+
+        }
+    });
+    data.books.forEach((book)=>{
+        if(book.isbn===req.params.Isb){
+           book.public=req.body.pubId;
+           return;
+        }
+
+    });
+    return res.json({updated_books:data.books, the_pub:data.pub});
+
+});
+//now using delete
+//1.delete a book
+project.delete("/delete/book/:Isbn",(req,res)=>{
+    //use filter as it creates new arr
+    const newBooks=data.books.filter((book)=>{
+        book.isbn!==req.params.Isbn;
+    });
+    data.books=newBooks;
+    return res.json(data.books);
+
+
+});
+
+
 
  
  project.listen(420,()=>console.log("lets check"));

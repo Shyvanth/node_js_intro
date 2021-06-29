@@ -1,14 +1,14 @@
 //here the company detials for what the user want
 //array of books ,with inside objects,cresting one object(1 book)
-const books=[{
-    isbn:"12",
+let books=[{
+    isbn:"123",
     title:"jai balayya",
     pub_date:"20-10-1985",
     lang:["telugu","english"],
     num_pa:"100",
     author:[1,2],
     category:["tech","movies","physics boya","logic"],
-    pub:[1,2],
+    public:1,
 
 },];
 //authors
@@ -28,12 +28,12 @@ const author=[{
 const pub=[{
     id:1,
     name:"TimeRangers",
-    books:["12"]
+    books:["123"]
 },
 {
     id:2,
     name:"Ranges",
-    books:["123"]
+    books:["1234"]
 },
 
 ];

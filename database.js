@@ -8,7 +8,7 @@ let books=[{
     num_pa:"100",
     author:[1,2],
     category:["tech","movies","physics boya","logic"],
-    public:1,
+    pub:1,
 
 },];
 //authors
@@ -33,7 +33,7 @@ const pub=[{
 {
     id:2,
     name:"Ranges",
-    books:["1234"]
+    books:[]
 },
 
 ];

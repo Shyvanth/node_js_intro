@@ -1,12 +1,26 @@
+require("dotenv").config();
+
 const exp=require("express");
+
+const { Mongoose } = require("mongoose");
 //imported
 //initialsing
 const project=exp();
+const mongoose=require("mongoose");
+const data=require("./database");
 project.use(exp.json());
+
+ mongoose.connect(process.env.MONGO_URL,
+{
+    useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+}).then(()=>console.log("success"));
 //local host server completed
 //now for books,authors etc.
 //importing
-const data=require("./database");
+
 //getting each
 project.get("/",(req,res)=>{return res.json({
     books:data.books,
@@ -144,7 +158,7 @@ project.put("/update/author/:Isbn/:AuthorId",(req,res)=>{
     return res.json({updated_books:data.books, updated_author:data.author});
 });
 //update /add new book to pub
-project.put("pub/update/book/:Isb",(req,res)=>{
+project.put("publi/update/book/:Isb",(req,res)=>{
     //updating pub databse
     data.pub.forEach((element)=>{
         if(element.id===req.body.pubId){
@@ -155,12 +169,12 @@ project.put("pub/update/book/:Isb",(req,res)=>{
     });
     data.books.forEach((book)=>{
         if(book.isbn===req.params.Isb){
-           book.public=req.body.pubId;
+           book.pub=req.body.pubId;
            return;
         }
 
     });
-    return res.json({updated_books:data.books, the_pub:data.pub});
+    return res.json(data.books);
 
 });
 //now using delete

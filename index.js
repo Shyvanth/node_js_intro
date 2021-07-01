@@ -8,6 +8,9 @@ const { Mongoose } = require("mongoose");
 const project=exp();
 const mongoose=require("mongoose");
 const data=require("./database");
+const BookModel=require("./mongo_database.js/book");
+//
+
 project.use(exp.json());
 
  mongoose.connect(process.env.MONGO_URL,
@@ -22,9 +25,11 @@ project.use(exp.json());
 //importing
 
 //getting each
-project.get("/",(req,res)=>{return res.json({
-    books:data.books,
-});
+project.get("/",async (req,res)=>{
+    const  getAllBooks=await BookModel.find();
+    return res.json(
+   getAllBooks
+);
 });
 project.get("/a/:isb",(req,res)=>{
    {const booky=data.books.filter((book)=>

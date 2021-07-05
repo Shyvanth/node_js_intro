@@ -2,12 +2,12 @@ const mongoose=require("mongoose");
 const BookSchema=mongoose.Schema({
     isbn:String,
     title:String,
-    pub_date:String,
-    lang:[String],
-    num_pa:String,
-    author:[Number],
-    category:[Number],
-    pub:Number,
+    pubDate:String,
+    language:[String],
+    numP:String,
+    authors:[Number],
+    category:[String],
+    publication:Number,
 
 });
 const BookModel=mongoose.model("books",BookSchema);

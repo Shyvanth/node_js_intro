@@ -1,41 +1,31 @@
-//here the company detials for what the user want
-//array of books ,with inside objects,cresting one object(1 book)
 let books=[{
     isbn:"123",
-    title:"jai balayya",
-    pub_date:"20-10-1985",
-    lang:["telugu","english"],
-    num_pa:"100",
-    author:[1,2],
-    category:["tech","movies","physics boya","logic"],
-    pub:1,
+    title:"indian stars",
+    pubDate:"20-20-2020",
+    language:["english"],
+    numP:200,
+    authors:[1,2],
+    category:["acting","disciple","direction"],
+    publication:1,
 
 },];
-//authors
-const author=[{
+const authors=[{
     id:1,
     name:"chiru",
-    books:["12","123"],
-
+    books:["123","12345"],
 },
 {
     id:2,
     name:"nag",
-    books:["12","125"],
-
-},];
-//publ
-const pub=[{
-    id:1,
-    name:"TimeRangers",
-    books:["123"]
+    books:["123","1235"],
 },
-{
-    id:2,
-    name:"Ranges",
-    books:[]
-},
-
 ];
-//as this is in nodejs,it has security,to gave export from here it
-module.exports={books,author,pub};
+const publication=[{
+    id:1,
+    name:"indian ranges",
+    books:["123","12345"],
+},];
+//created by company
+//now to ecport to another files
+module.exports={books,authors,publication};
+
